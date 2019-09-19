@@ -1,3 +1,18 @@
+$(document).ready(function(){
+    const isAdmin = window.sessionStorage.getItem('isAdmin');
+    if (!isAdmin){
+        // $('#create-job-form').hide();
+        window.location = "../login/login.html";
+    }
+    if (isAdmin){
+        $('#login').hide();
+    }
+    $(document).on('click', '#logout', function(){
+        window.sessionStorage.clear()
+        window.location = "../index.html"
+    });
+  });
+
 $(document).on('submit', '#create-job-form', function(event){
     // get the form data
     let formData = {
