@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    let admin = window.sessionStorage.getItem('isAdmin');
+    if (!admin){
+        $("#create-job").hide()
+    }
+
     $("form.login-form").on('submit',function(){
         let username = $('input[name=username]').val()
         let password = $('input[name=password]').val()   
@@ -9,6 +14,9 @@ $(document).ready(function(){
             success: function(result){
                 let msg = ""
                 if (result.length == 1){
+                    // console.log("here")
+                    sessionStorage.setItem('username', result[0]['username'])
+                    sessionStorage.setItem('isAdmin', result[0]['isAdmin'])
                     window.location = "../index.html"
                 }
                 else {

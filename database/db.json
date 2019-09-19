@@ -106,12 +106,18 @@
       "Job Description": "A prominent natural hair and skincare products manufacturer and retailer based in Lekki Phase 1, Lagos, is in need of an Operations Officer to handle day-to-day administrative and general management functions. These include; Managing day-to-day operations, Interviewing and hiring of junior staff, Dealing with suppliers, Generating daily/weekly sales reports, Preparing monthly payroll"
     }
   ],
-  
-  "users" : [
-      {
-          "id": 1,
-          "username": "Admin",
-          "password": "administrator"
-      }
+  "users": [
+    {
+      "id": 1,
+      "username": "Admin",
+      "password": "administrator",
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "username": "Saheed",
+      "password": "ademola",
+      "isAdmin": true
+    }
   ]
 }
