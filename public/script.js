@@ -1,21 +1,23 @@
 $(document).ready(function(){
     let admin = window.sessionStorage.getItem('isAdmin');
+    let username = window.sessionStorage.getItem('username')
     if (!admin){
         $("#create-job").hide();
         $('#logout').hide();
     }
     if (admin){
-        $("#login").hide()
+        $("#login").hide();
+        $("#greeting").prepend(
+            `<div class="card-header bg-primary" style="color: white" id="greeting-message">
+                Welcome ${username}
+            </div>`)
     }
     let dataList = $("#job-listings")
-    // let data = $.get("http://localhost:3000/jobs", function(data, status){
-    //     // alert("Data: " + data + "\nStatus: " + status);
-    //   });
     $.ajax({
         type: "GET",
         url: "http://localhost:3000/jobs",
         success: function(result){
-            console.log(result);
+            // console.log(result);
             let output = "<h5 class=\"card-title\">";
             const isAdmin = window.sessionStorage.getItem('isAdmin');
             for (let element of result.reverse()) {
@@ -25,16 +27,11 @@ $(document).ready(function(){
                 else {
                     output += "<h5 class=\"card-title\">" + element.title + "</h5><p class=\"card-text\">" + element['Job Summary'] + "</p><button class=\"btn btn-info\" data-id='" + element.id + "' id=\"readMore\">Read More</button><hr>";
                 }
-                console.log(element.title)
+                // console.log(element.title)
             }
             dataList.html(output)
-            // if (isAdmin) {
-            //     $('#deleteButton').hide();
-            //     $('#editButton').hide();
-            // }
           }
       })
-    // console.log(data)
     $(document).on('click', '#logout', function(){
         window.sessionStorage.clear()
     });
@@ -52,7 +49,7 @@ $(document).on('click', '#readMore', function(){
     $.getJSON(url, function(data){
         let dataList = $("#job-listings")
         let output = "<h5 class=\"card-title\">";
-        output += "<h5 class=\"card-title\">" + data.title + "</h5><h6 class=\"card-title\"> Company: " + data.company + "</h6><h6 class=\"card-title\"> Department: " + data.department + "</h6><h6 class=\"card-title\"> Location: " + data.location + "</h6><h6 class=\"card-title\"> Type: " + data.type + "</h6><h6 class=\"card-title\"> Industry: " + data.industry + "</h6><h6 class=\"card-title\"> Salary: " + data.salary + "</h6><h6 class=\"card-title\"> Mininmum Qualification: " + data["Minimum Qualification"] + "</h6><h6 class=\"card-title\"> Experience Level: " + data["Experience Level"] + "</h6><h6 class=\"card-title\"> Experience Length: " + data["Experience Length"] + "</h6><p class=\"card-text\"> <b>Job Summary</b>: <br/>" + data['Job Summary'] + "<hr>"
+        output += "<h5 class=\"card-title\">" + data.title + "</h5><h6 class=\"card-title\"> Company: " + data.company + "</h6><h6 class=\"card-title\"> Department: " + data.department + "</h6><h6 class=\"card-title\"> Location: " + data.location + "</h6><h6 class=\"card-title\"> Type: " + data.type + "</h6><h6 class=\"card-title\"> Industry: " + data.Industry + "</h6><h6 class=\"card-title\"> Salary: " + data.salary + "</h6><h6 class=\"card-title\"> Mininmum Qualification: " + data["Minimum Qualification"] + "</h6><h6 class=\"card-title\"> Experience Level: " + data["Experience Level"] + "</h6><h6 class=\"card-title\"> Experience Length: " + data["Experience Length"] + "</h6><p class=\"card-text\"> <b>Job Summary</b>: <br/>" + data['Job Summary'] + "<hr>"
         dataList.html(output)
     })
 });
@@ -116,7 +113,7 @@ $(document).on('click', '#editButton', function(){
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
             </form>`
-        console.log(data)
+        // console.log(data)
         // let output = "<h5 class=\"card-title\">";
         // output += "<h5 class=\"card-title\">" + data.title + "</h5><h6 class=\"card-title\"> Company: " + data.company + "</h6><h6 class=\"card-title\"> Department: " + data.department + "</h6><h6 class=\"card-title\"> Location: " + data.location + "</h6><h6 class=\"card-title\"> Type: " + data.type + "</h6><h6 class=\"card-title\"> Industry: " + data.industry + "</h6><h6 class=\"card-title\"> Salary: " + data.salary + "</h6><h6 class=\"card-title\"> Mininmum Qualification: " + data["Minimum Qualification"] + "</h6><h6 class=\"card-title\"> Experience Level: " + data["Experience Level"] + "</h6><h6 class=\"card-title\"> Experience Length: " + data["Experience Length"] + "</h6><p class=\"card-text\"> <b>Job Summary</b>: <br/>" + data['Job Summary'] + "<hr>"
         dataList.html(editHtml)

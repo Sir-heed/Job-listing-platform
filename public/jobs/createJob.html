@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Create Job</title>
 </head>
 <body>
     <div>
         <!-- NAV BAR -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">MyJobs</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"><span style="color: black">My</span><span style="color: red">Jobs</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +45,7 @@
         <form id="create-job-form" action="" method="POST">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="Enter Job Title" required>
+                <input type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="Job Title" required>
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
             <div class="form-group">
